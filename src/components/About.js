@@ -27,34 +27,31 @@ class About extends Component {
             <div className="about-content">
                 <div>The aim of this free tool is to help people understand grant-making data from <a className="link" href="http://www.threesixtygiving.com" target="_blank">360Giving</a> in a new and exciting way.</div>
                 <div className="section-title"><span>What is it?</span></div>
-                <div>Funding Snapshots allows users to zoom out on the data to provide overall headline trends and then zoom in to take a closer look at dedicated dashboards for each funder.</div>
+                <div>Funding Trends allows users to zoom out on the data to see the overall funding trends and then zoom in to take a closer look at dedicated dashboards for each funder.</div>
                 <div>It uses data from 360Giving’s <a className="link" href="http://grantnav.threesixtygiving.org/" target="_blank">GrantNav</a>, as well as Charity Commission data from the <a className="link" href="https://charitybase.uk/" target="_blank">CharityBase</a> database.</div>
                 <div className="section-title"><span>Who can it help?</span></div>
                 <div className="about-help">
                     <div>
                         <div className="about-help--title"><div>Funders</div></div>
                         <div>Undertake strategic reviews: see how your funding has changed over the years and how your foundation compares to others</div>
-                        <div>Communicate your data: use your dedicated dashboard to show key statistics about your giving to trustees and staff</div>
-                        <div>Conduct due diligence: see if other funders have supported organisations that you are considering funding and view the themes in which they work</div>
+                        <div>Communicate your data: use your dedicated dashboard to show key statistics about your giving to trustees, staff and recipients</div>
                     </div>
                     <div>
                         <div className="about-help--title"><div>Charities or other user-led organisations</div></div>
                         <div>Research new funding sources: find out more about potential funding prospects and their approach to grant-making</div>
                         <div>Learn more about your current funders: see how they rank against other funders and how your grant compares to their most common interests and approach</div>
-                        <div>Collaborate with others: find other organisations that are also receiving funds from the same funder that may share common goals</div>
                     </div>
                     <div>
                         <div className="about-help--title"><div>Researchers</div></div>
-                        <div>View overall headline trends: see who are the largest grant-makers and the most popular themes</div>
-                        <div>Understand common practice among funders: examine topics such as range of focus, number of recipients and average grant sizes</div>
-                        <div>Uncover patterns: Find out the changes in grant-making over the years at the overall and individual level</div>
+                        <div>Understand common practice among funders: examine topics such as popular focus themes, number of recipients and average grant sizes</div>
+                        <div>Uncover patterns: Find out changes in grant-making over the years at the overall and individual level</div>
                     </div>
                 </div>
                 <div className="section-title"><span>What are the limitations of this data?</span></div>
-                <div className="about-space">There are several limitations in this data that you should keep in mind when researching foundations and making conclusions from the data:</div>
+                <div className="about-space">There are limitations in this data that you should keep in mind when researching foundations and making conclusions from the data:</div>
                 <div><span className="about-bold color">1.	Not all funders are included</span>: This tool only includes foundations that have submitted their data to the 360Giving campaign—find out how to join the movement and submit your foundation’s data <a className="link" href="http://www.threesixtygiving.org/support/publish-data/" target="_blank">here</a>.</div>
-                <div className="about-example">For example: major UK funder, Garfield Weston Foundation is not included.</div>
-                <div><span className="about-bold color2">2.	Funding data does not cover all years</span>: This tool looks at data over a five-year period from 2013 to 2017, but not all funders have submitted all of their data for this period.</div>
+                <div className="about-example">For example: major UK funder Garfield Weston Foundation is not included.</div>
+                <div><span className="about-bold color2">2.	Funding data does not cover all years</span>: This tool looks at data over a five-year period from 2013 to 2017, but not all funders have submitted their data for this period.</div>
                 <div className="about-example">For example: for the year 2017, the Wellcome Trust has so far only submitted data from 1 January to 30 September.</div>
                 <div><span className="about-bold color3">3.	Theme data is incomplete</span>: Visuals from the tool that include themes (eg, causes, users and operations) are limited to a proportion of recipients. This includes recipients without a completed or matching Charity Commission field in the 360Giving Standard, as well as organisations that are not currently registered under the Charity Commission for England and Wales.</div>
                 <div className="about-example">For example: theme data does not cover the many user-led organisations funded by the Big Lottery Foundation.</div>
