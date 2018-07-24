@@ -1,1 +1,0 @@
-{"version":3,"sources":["setYear.js"],"names":[],"mappings":";;;;;;qBAAyB,SAAS;;AAElC,SAAS,MAAM,CAAC,IAAI,EAAE;AAClB,WAAO,EAAE,IAAI,iBAAU,EAAE,IAAI,EAAJ,IAAI,EAAE,CAAC;CACnC;;qBAEc,MAAM","file":"setYear-compiled.js","sourcesContent":["import { SET_YEAR } from './const';\n\nfunction action(name) {\n    return { type: SET_YEAR, name };\n}\n\nexport default action;\n"]}

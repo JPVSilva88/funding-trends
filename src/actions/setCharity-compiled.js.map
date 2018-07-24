@@ -1,1 +1,0 @@
-{"version":3,"sources":["setCharity.js"],"names":[],"mappings":";;;;;;qBAA4B,SAAS;;AAErC,SAAS,MAAM,CAAC,IAAI,EAAE;AAClB,WAAO,EAAE,IAAI,oBAAa,EAAE,IAAI,EAAJ,IAAI,EAAE,CAAC;CACtC;;qBAEc,MAAM","file":"setCharity-compiled.js","sourcesContent":["import { SET_CHARITY } from './const';\n\nfunction action(name) {\n    return { type: SET_CHARITY, name };\n}\n\nexport default action;\n"]}
