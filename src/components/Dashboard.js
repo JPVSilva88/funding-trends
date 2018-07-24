@@ -56,8 +56,8 @@ class Dashboard extends Component {
            }
         });
 
-        this.onAboutClicked = this.onAboutClicked.bind(this);
-        this.onHomeClicked = this.onHomeClicked.bind(this);
+        this.onAboutClicked = this.onPageChanged.bind(this, 'about');
+        this.onHomeClicked = this.onPageChanged.bind(this, 'home');
         this.onYearChanged = this.onYearChanged.bind(this);
         this.onComparisonChanged = this.onComparisonChanged.bind(this);
     }
@@ -216,14 +216,10 @@ class Dashboard extends Component {
                 }))
     }
 
-    onHomeClicked() {
-        this.props.setPage("home");
+    onPageChanged(page) {
+        this.props.setPage(page);
         this.props.setComparison(null);
-    }
-
-    onAboutClicked() {
-        this.props.setPage("about");
-        this.props.setComparison(null);
+        this.props.bubbleExpand.forEach((be) => this.props.setBubbleExpand(be));
     }
 
     render() {

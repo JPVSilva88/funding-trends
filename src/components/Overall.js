@@ -48,7 +48,8 @@ class Overall extends Component {
             }
         });
 
-        this.onBackClicked = this.onBackClicked.bind(this);
+        this.onBackClicked = this.onPageChanged.bind(this, 'home');
+        this.onAboutClicked = this.onPageChanged.bind(this, 'about');
         this.onYearChanged = this.onYearChanged.bind(this);
     }
 
@@ -172,8 +173,8 @@ class Overall extends Component {
         this.props.setYear(newValue.value);
     }
 
-    onBackClicked() {
-        this.props.setPage("home");
+    onPageChanged(page) {
+        this.props.setPage(page);
         this.props.bubbleExpand.forEach((be) => this.props.setBubbleExpand(be));
     }
 
@@ -279,7 +280,7 @@ class Overall extends Component {
                 colorClass="operation"
             />
             <div className="bottom-note">
-                <div>Note: recipients may have more than one theme description within each category and data may not be provided for full calendar years, see <span className="link-rev" onClick={() => this.props.setPage("about")}>About</span> for limitations in this data</div>
+                <div>Note: recipients may have more than one theme description within each category and data may not be provided for full calendar years, see <span className="link-rev" onClick={this.onAboutClicked}>About</span> for limitations in this data</div>
             </div>
         </div>;
     }

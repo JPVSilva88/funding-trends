@@ -5,7 +5,7 @@ import data from '../data.json';
 
 import 'react-select/dist/react-select.css';
 
-const CharityChooser = ({ year, checkTheme, currCharity, value }) => (
+const CharityChooser = ({ year, checkTheme, currCharity, value, onChange }) => (
     <div className="charity-chooser">
         <Select
             options={data.foundations
@@ -19,7 +19,7 @@ const CharityChooser = ({ year, checkTheme, currCharity, value }) => (
             valueKey="n"
             labelKey="n"
             placeholder="Select or type..."
-            onChange={(newValue) => this.props.onChange(newValue && newValue.n)}
+            onChange={(newValue) => onChange(newValue && newValue.n)}
             searchable={true}
         />
     </div>
