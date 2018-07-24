@@ -55,7 +55,7 @@ class MainPage extends Component {
             </div>
             <div className="page-middle">
                 <div className="square zoom-out" onClick={this.onOverallClick.bind(this)}>
-                    <span>Click to view overall headline trends</span>
+                    Click to view overall headline trends
                 </div>
                 <div className="square zoom-in">
                     View dashboards of specific funders

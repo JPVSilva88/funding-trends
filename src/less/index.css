@@ -410,7 +410,9 @@ div.Select-placeholder {
   text-align: right;
 }
 .page {
-  height: 100vh;
+  position: absolute;
+  bottom: 0;
+  top: 0;
 }
 .page-title {
   height: 11%;
@@ -470,11 +472,6 @@ div.Select-placeholder {
 .zoom-out {
   background: #3dadb2;
   padding: 10px;
-}
-.zoom-out > span {
-  padding: 10px;
-  border-radius: 5px;
-  border: solid 1px #fff;
 }
 .zoom-out:hover {
   background-color: #50bec3;

@@ -5,7 +5,7 @@
  */
 import { SET_PAGE } from '../actions/const';
 
-function reducer(state = "foundation", action) {
+function reducer(state = "home", action) {
   switch (action.type) {
 
     case SET_PAGE: {
