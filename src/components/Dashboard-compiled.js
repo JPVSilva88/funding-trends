@@ -114,6 +114,7 @@ var Dashboard = (function (_Component) {
         });
 
         this.onAboutClicked = this.onAboutClicked.bind(this);
+        this.onHomeClicked = this.onHomeClicked.bind(this);
         this.onYearChanged = this.onYearChanged.bind(this);
         this.onComparisonChanged = this.onComparisonChanged.bind(this);
     }
@@ -245,6 +246,20 @@ var Dashboard = (function (_Component) {
     }, {
         key: 'onYearChanged',
         value: function onYearChanged(newValue) {
+            var _this2 = this;
+
+            var comparison = this.props.comparison;
+
+            if (comparison) {
+                var comparisonData = _dataJson2['default'].foundations.find(function (a) {
+                    return a.n === _this2.props.comparison;
+                });
+
+                if (!comparisonData.y[newValue.value]) {
+                    this.props.setComparison(null);
+                }
+            }
+
             this.props.setYear(newValue.value);
         }
     }, {
@@ -286,7 +301,7 @@ var Dashboard = (function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            var _this2 = this;
+            var _this3 = this;
 
             var _props2 = this.props;
             var charity = _props2.charity;
@@ -309,8 +324,9 @@ var Dashboard = (function (_Component) {
                 operations: this.findTopTheme(found, _operationsJson2['default'], 'o')
             };
 
+            var comparisonData;
             if (comparison) {
-                var comparisonData = _dataJson2['default'].foundations.find(function (a) {
+                comparisonData = _dataJson2['default'].foundations.find(function (a) {
                     return a.n === comparison;
                 });
 
@@ -327,9 +343,7 @@ var Dashboard = (function (_Component) {
                     { className: 'dashboard--top' },
                     _react2['default'].createElement(
                         'div',
-                        { className: 'back', onClick: function () {
-                                return _this2.props.setPage("home");
-                            } },
+                        { className: 'back', onClick: this.onHomeClicked },
                         _react2['default'].createElement('i', { className: 'fa fa-chevron-left fa-2x' })
                     ),
                     _react2['default'].createElement(
@@ -428,8 +442,8 @@ var Dashboard = (function (_Component) {
                     getValue: function (r) {
                         return r.m;
                     },
-                    seeMore: function () {
-                        return _this2.props.setBubbleExpand("funders");
+                    seeMore: found.r[year].length > 5 && function () {
+                        return _this3.props.setBubbleExpand("funders");
                     },
                     seeMoreLabel: bubbleExpand.indexOf("funders") > -1 ? "See Less" : "See More",
                     end: bubbleExpand.indexOf("funders") > -1 ? 15 : 5
@@ -453,6 +467,7 @@ var Dashboard = (function (_Component) {
                         _react2['default'].createElement(_CharityChooser2['default'], {
                             onChange: this.onComparisonChanged,
                             checkTheme: true,
+                            value: comparison && comparisonData,
                             currCharity: found.n,
                             year: year
                         })

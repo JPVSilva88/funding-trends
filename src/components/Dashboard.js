@@ -57,6 +57,7 @@ class Dashboard extends Component {
         });
 
         this.onAboutClicked = this.onAboutClicked.bind(this);
+        this.onHomeClicked = this.onHomeClicked.bind(this);
         this.onYearChanged = this.onYearChanged.bind(this);
         this.onComparisonChanged = this.onComparisonChanged.bind(this);
     }
@@ -184,6 +185,15 @@ class Dashboard extends Component {
     }
     
     onYearChanged(newValue) {
+        const { comparison } = this.props;
+        if(comparison) {
+            const comparisonData = data.foundations.find((a) => a.n === this.props.comparison);
+
+            if(!comparisonData.y[newValue.value]) {
+                this.props.setComparison(null);
+            }
+        }
+
         this.props.setYear(newValue.value);
     }
 
@@ -227,8 +237,9 @@ class Dashboard extends Component {
             operations: this.findTopTheme(found, operations, 'o')
         };
 
+        var comparisonData;
         if(comparison) {
-            const comparisonData = data.foundations.find((a) => a.n === comparison);
+            comparisonData = data.foundations.find((a) => a.n === comparison);
 
             topThemes.causesComparison = this.findTopTheme(comparisonData, causes, 'c');
             topThemes.beneficiariesComparison = this.findTopTheme(comparisonData, beneficiaries, 'b');
@@ -237,7 +248,7 @@ class Dashboard extends Component {
 
         return <div className="dashboard funders">
             <div className="dashboard--top">
-                <div className="back" onClick={() => this.props.setPage("home")}>
+                <div className="back" onClick={this.onHomeClicked}>
                     <i className="fa fa-chevron-left fa-2x"/>
                 </div>
                 <div className="dashboard--title">
@@ -286,7 +297,7 @@ class Dashboard extends Component {
             <BubbleData
                 list={found.r[year]}
                 getValue={(r) => r.m}
-                seeMore={() => this.props.setBubbleExpand("funders")}
+                seeMore={found.r[year].length > 5 && (() => this.props.setBubbleExpand("funders"))}
                 seeMoreLabel={bubbleExpand.indexOf("funders") > -1 ? "See Less" : "See More"}
                 end={bubbleExpand.indexOf("funders") > -1 ? 15 : 5}
             />
@@ -298,6 +309,7 @@ class Dashboard extends Component {
                 <CharityChooser
                     onChange={this.onComparisonChanged}
                     checkTheme={true}
+                    value={comparison && comparisonData}
                     currCharity={found.n}
                     year={year}
                 />

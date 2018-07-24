@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", {
 var _actionsConst = require('../actions/const');
 
 function reducer(state, action) {
-  if (state === undefined) state = "about";
+  if (state === undefined) state = "foundation";
 
   switch (action.type) {
 
