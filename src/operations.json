@@ -1,0 +1,62 @@
+[
+  {
+    "id": 301,
+    "short": "Grants: individuals",
+    "name": "Makes grants to individuals",
+    "icon": "fa-user"
+  },
+  {
+    "id": 302,
+    "short": "Grants: organisations",
+    "name": "Makes grants to organisations",
+    "icon": "fa-sitemap"
+  },
+  {
+    "id": 303,
+    "short": "Other finance",
+    "name": "Provides other finance",
+    "icon": "fa-credit-card"
+  },
+  {
+    "id": 304,
+    "short": "Human resources",
+    "name": "Provides human resources",
+    "icon": "fa-users"
+  },
+  {
+    "id": 305,
+    "short": "Buildings",
+    "name": "Provides buildings/facilities/open space",
+    "icon": "fa-building"
+  },
+  {
+    "id": 306,
+    "short": "Service delivery",
+    "name": "Provides services",
+    "icon": "fa-wrench"
+  },
+  {
+    "id": 307,
+    "short": "Advocacy & advice",
+    "name": "Provides advocacy/advice/information",
+    "icon": "fa-bullhorn"
+  },
+  {
+    "id": 308,
+    "short": "Research",
+    "name": "Sponsors or undertakes research",
+    "icon": "fa-flask"
+  },
+  {
+    "id": 309,
+    "short": "Umbrella",
+    "name": "Acts as an umbrella or resource body",
+    "icon": "fa-umbrella"
+  },
+  {
+    "id": 310,
+    "short": "Other",
+    "name": "Other charitable activities",
+    "icon": "fa-user-plus"
+  }
+]

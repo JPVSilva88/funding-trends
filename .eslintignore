@@ -1,0 +1,6 @@
+/node_modules/**
+webpack.*
+*--spec.jsx
+*--spec.js
+/build/**
+/public/**

@@ -1,0 +1,1 @@
+{"version":3,"sources":["setPage.js"],"names":[],"mappings":";;;;;;qBAAyB,SAAS;;AAElC,SAAS,MAAM,CAAC,IAAI,EAAE;AAClB,WAAO,EAAE,IAAI,iBAAU,EAAE,IAAI,EAAJ,IAAI,EAAE,CAAC;CACnC;;qBAEc,MAAM","file":"setPage-compiled.js","sourcesContent":["import { SET_PAGE } from './const';\n\nfunction action(name) {\n    return { type: SET_PAGE, name };\n}\n\nexport default action;\n"]}

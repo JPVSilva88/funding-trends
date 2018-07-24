@@ -1,0 +1,65 @@
+@import 'variables.less';
+
+.overall > .dashboard--top {
+  background: @overall;
+}
+
+.overall .back:hover {
+  background: darken(@overall, 10%);
+}
+
+.subsection-title {
+  font-size: large;
+  margin: 20px 10px;
+  text-align: left;
+}
+
+.average-money {
+  > .number-data > .number--title {
+    color: #F9C08F;
+  }
+}
+
+.average-grants, .average-money {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  > .chart {
+    width: calc(100% - 180px);
+    margin-right: 10px;
+  }
+
+  > .number-data {
+    width: 150px;
+    flex-shrink: 0;
+    margin: 10px;
+  }
+}
+
+.tooltip-text {
+  border-bottom: solid 1px @gray;
+}
+
+.tooltip-row {
+  display: flex;
+  background: lighten(@background, 7%);
+  font-size: small;
+
+  > div {
+    padding: 5px;
+    border-top: solid 1px @gray;
+    border-left: solid 1px @gray;
+
+    &:first-child {
+      width: 200px;
+      text-align: left;
+    }
+
+    &:last-child {
+      width: 55px;
+      border-right: solid 1px @gray;
+      text-align: right;
+    }
+  }
+}

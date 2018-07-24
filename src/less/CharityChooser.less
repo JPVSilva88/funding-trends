@@ -1,0 +1,76 @@
+.charity-chooser .Select-control {
+  width: 250px;
+}
+
+.charity-chooser div.Select-menu-outer {
+  width: 150%;
+}
+
+div.Select.is-focused > div.Select-control {
+  background-color: lighten(@background, 15%) !important;
+}
+
+div.Select-control {
+  border: 0;
+  height: 30px;
+  border-radius: 0;
+  background-color: lighten(@background, 15%);
+  border-bottom: solid 1px @textcolor;
+
+  input {
+    color: @textcolor;
+  }
+}
+
+div.Select-value {
+  line-height: 30px !important;
+}
+
+span.Select-value-label {
+  color: @textcolor !important;
+}
+
+span.Select-arrow-zone > span.Select-arrow {
+  border-top-color: @textcolor;
+}
+
+span.Select-arrow-zone:hover > span.Select-arrow {
+  border-top-color: darken(@textcolor, 30%) !important;
+}
+
+.Select-multi-value-wrapper > div.Select-input {
+  height: 30px;
+}
+
+.Select-multi-value-wrapper > div.Select-input:focus {
+  background-color: lighten(@background, 15%);
+}
+
+div.Select-menu-outer {
+  max-height: 250px;
+  right: 0;
+  left: auto;
+  border-top-left-radius: 4px;
+}
+
+div.Select-menu {
+  max-height: 246px;
+}
+
+span.Select-arrow-zone {
+  background: lighten(@background, 15%);
+}
+
+div.Select-option, div.Select-noresults {
+  background: lighten(@background, 15%);
+  color: @textcolor;
+
+  &.is-focused {
+    background: @textcolor;
+    color: lighten(@background, 15%);
+  }
+}
+
+div.Select-placeholder {
+  font-size: small;
+}

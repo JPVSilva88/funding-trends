@@ -1,0 +1,43 @@
+@import 'variables.less';
+
+.bubbles {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.bubbles > div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 20%;
+  height: 160px;
+}
+
+.bubbles > div > .bubble--title {
+  height: 55px;
+  width: 90%;
+  margin-top: 5px;
+  color: @textcolor;
+  font-size: smaller;
+}
+
+.bubble {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: @textcolor;
+  background-color: @color;
+  transition: all 0.3s ease-out;
+}
+
+.bubble-alt > .bubble {
+  background-color: @color2;
+}
+
+.see-more {
+  text-align: right;
+  font-size: small;
+  margin-right: 10px;
+}

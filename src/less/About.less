@@ -1,0 +1,74 @@
+@import 'variables.less';
+
+.about > .dashboard--top {
+  background: @about;
+}
+
+.about .back:hover {
+  background: darken(@about, 10%);
+}
+
+.about-content {
+  text-align: left;
+  padding: 10px;
+}
+
+.about-help {
+  display: flex;
+  text-align: center;
+
+  > div > div {
+    padding: 10px;
+  }
+
+  > div:not(:last-child) {
+    border-right: solid 1px @textcolor;
+  }
+
+
+  > div:first-child > .about-help--title > div {
+    background: @color;
+  }
+
+  > div:nth-child(2) > .about-help--title > div {
+    background: @color2;
+  }
+
+  > div:last-child > .about-help--title > div {
+    background: @color3;
+  }
+}
+
+.about-help--title {
+  font-weight: bold;
+  font-size: large;
+  display: flex;
+  justify-content: center;
+
+  > div {
+    padding: 5px 10px;
+    border-radius: 6px;
+  }
+}
+
+.about-space {
+  margin-bottom: 20px;
+}
+
+.about-bold {
+  font-weight: bold;
+}
+
+.about-example {
+  margin: 5px 0 20px 0;
+  color: #a2a2a2;
+}
+
+.about .bottom-note {
+  margin-top: 20px;
+}
+
+.about .bottom-note > div {
+  width: 100%;
+  text-align: left;
+}

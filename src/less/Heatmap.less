@@ -1,0 +1,70 @@
+@import 'variables.less';
+
+.heatmap {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 10px;
+
+  > .heatmap-cell {
+    width: 100px;
+    margin: 2px;
+    > div {
+      display: flex;
+      flex-direction: column;
+      border-top: 2px solid @textcolor;
+      border-left: 2px solid @textcolor;
+      border-right: 2px solid @textcolor;
+      padding: 5px;
+    }
+
+    > div:first-child {
+      height: 50px;
+    }
+
+    > div:first-child > span {
+      font-size: small;
+      margin-top: 3px;
+    }
+
+    > div:last-child {
+      border-bottom: 2px solid @textcolor;
+      font-size: small;
+    }
+  }
+}
+
+.heatmap-builder(0);
+.heatmap-builder(1);
+.heatmap-builder(2);
+.heatmap-builder(3);
+.heatmap-builder(4);
+.heatmap-builder(5);
+.heatmap-builder(6);
+.heatmap-builder(7);
+.heatmap-builder(8);
+.heatmap-builder(9);
+.heatmap-builder(10);
+
+.heatmap-builder(@i) {
+  .heatmap-@{i}.cause {
+    background-color: lighten(@cause, (10-@i) * 4);
+
+    & when (@i < 4) {
+      color: @background;
+    }
+  }
+  .heatmap-@{i}.beneficiary {
+    background-color: lighten(@beneficiary, (10-@i) * 4);
+
+    & when (@i < 4) {
+      color: @background;
+    }
+  }
+  .heatmap-@{i}.operation {
+    background-color: lighten(@operation, (10-@i) * 4);
+
+    & when (@i < 4) {
+      color: @background;
+    }
+  }
+}

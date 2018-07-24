@@ -1,0 +1,306 @@
+@import 'variables.less';
+
+.dashboard {
+  padding: 75px 10px 10px 10px;
+}
+
+.back {
+  margin-left: 5px;
+  cursor: pointer;
+  height: 46px;
+  width: 46px;
+  border-radius: 23px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > i {
+    margin-left: -6px;
+    margin-bottom: -2px;
+  }
+}
+
+.funders .back:hover {
+  background: darken(@dashboard, 20%);
+
+}
+
+.funders > .dashboard--top {
+  background: @dashboard;
+}
+
+.dashboard--top {
+  display: flex;
+  border-bottom: solid 1px @textcolor;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  left: 0;
+  padding: 10px;
+  z-index: 1;
+  align-items: center;
+}
+
+.dashboard--title {
+  text-align: left;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.foundation--name {
+  font-size: xx-large;
+  text-transform: uppercase;
+}
+
+.section-title {
+  text-transform: uppercase;
+  font-size: larger;
+  margin: 20px 10px;
+  display: flex;
+  justify-content: center;
+
+  background: linear-gradient(@background 0%, @background 49%, @textcolor 50%, @textcolor 51%, @background 52%, @background 100%);
+
+  > span {
+    background: @background;
+    padding: 5px 30px;
+    border: 1px solid @textcolor;
+    border-radius: 4px;
+  }
+}
+
+.bottom-note {
+  display: flex;
+  margin-top: 10px;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.bottom-note > div {
+  font-size: small;
+  text-align: right;
+  color: #999;
+  width: 500px;
+}
+
+///// YEAR SELECTOR /////
+
+.year-selector {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  font-size: 15px;
+  margin-right: 20px;
+}
+
+.year-selector > div {
+  width: 80px;
+  margin-top: 5px;
+  text-align: left;
+  flex-shrink: 0;
+}
+
+.foundation--numbers {
+  display: flex;
+  justify-content: space-around;
+}
+
+.foundation--money-chart {
+  display: flex;
+  align-items: flex-end;
+  margin: 10px 60px;
+}
+
+.foundation--money-chart > div:nth-child(2),
+.foundation--money-chart > div:nth-child(4) {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.foundation--money-chart > div:nth-child(2) {
+  background-color: @color2;
+}
+
+.foundation--money-chart > div:nth-child(4) {
+  background-color: lighten(@color2, 30%);
+}
+
+.foundation--money-chart > div:nth-child(1),
+.foundation--money-chart > div:nth-child(3),
+.foundation--money-chart > div:nth-child(5) {
+  width: 1px;
+  background-color: @textcolor;
+  height: 40px;
+}
+
+.foundation--money-chart > div:nth-child(3) {
+  width: 2px;
+  height: 60px;
+  position: relative;
+
+  > div {
+    font-size: small;
+    position: absolute;
+    width: 100px;
+
+    &:first-child {
+      right: 8px;
+      text-align: right;
+    }
+
+    &:last-child {
+      left: 5px;
+      text-align: left;
+    }
+  }
+}
+
+////// CHARTS //////
+
+.comparison-chooser {
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 10px 20px 10px 0;
+
+  > div {
+    margin-left: 10px;
+  }
+}
+
+.charts > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.chart-text {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chart-title {
+  color: @textcolor;
+  font-size: xx-large;
+  margin-bottom: 10px;
+}
+
+.chart-top, .chart-top-comparison {
+  width: 180px;
+  height: 100px;
+  border: solid 1px @textcolor;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  margin: 5px;
+
+  > .number--title {
+    color: @textcolor;
+  }
+
+  > i {
+    margin: 5px 0;
+  }
+}
+
+.chart-top-comparison {
+  color: @background;
+
+  > .number--title {
+    color: @background;
+  }
+}
+
+.chart-top.cause {
+  background: @cause;
+}
+
+.chart-top-comparison.cause {
+  background: lighten(@cause, 35%);
+}
+
+.chart-top.beneficiary {
+  background: @beneficiary;
+}
+
+.chart-top-comparison.beneficiary {
+  background: lighten(@beneficiary, 30%);
+}
+
+.chart-top.operation {
+  background: @operation;
+}
+
+.chart-top-comparison.operation {
+  background: lighten(@operation, 30%);
+}
+
+.funders .chart {
+  width: calc(100% - 200px);
+}
+
+.chart {
+  font-family: Helvetica, "Arial", sans-serif;
+  color: @textcolor;
+}
+
+.c3-texts > text {
+  fill: @textcolor !important;
+}
+
+.c3-legend-item > text {
+  fill: @textcolor !important;
+}
+
+.c3-axis {
+  path {
+    fill: @textcolor;
+    stroke: @textcolor !important;
+  }
+
+  text {
+    fill: @textcolor;
+  }
+
+  .tick > line {
+    stroke: @textcolor;
+  }
+}
+
+.c3-axis-x text {
+  font-size: 12px;
+}
+
+.link-rev {
+  text-decoration: underline;
+  cursor: pointer;
+  color: @gray;
+
+  &:hover {
+    color: @textcolor;
+  }
+}
+
+.link {
+  text-decoration: underline;
+  cursor: pointer;
+  color: @textcolor;
+
+  &:hover {
+    color: @gray;
+  }
+}
