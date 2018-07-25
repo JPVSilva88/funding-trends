@@ -57,7 +57,7 @@ class MainPage extends Component {
                 <div className="square zoom-out" onClick={this.onOverallClick.bind(this)}>
                     Click to view overall headline trends
                 </div>
-                <div className="square zoom-in">
+                <div className="square zoom-in" onClick={() => document.getElementById("select").focus()}>
                     View dashboards of specific funders
                     <div className="chooser">
                         <span>Search Funder:</span>

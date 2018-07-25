@@ -8,6 +8,7 @@ import 'react-select/dist/react-select.css';
 const CharityChooser = ({ year, checkTheme, currCharity, value, onChange }) => (
     <div className="charity-chooser">
         <Select
+            id="select"
             options={data.foundations
                 .filter(
                     f => (!year || f.y[year])
