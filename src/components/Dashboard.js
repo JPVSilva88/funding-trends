@@ -183,7 +183,7 @@ class Dashboard extends Component {
     onComparisonChanged(newComparison) {
         this.props.setComparison(newComparison);
     }
-    
+
     onYearChanged(newValue) {
         const { comparison } = this.props;
         if(comparison) {
@@ -205,11 +205,11 @@ class Dashboard extends Component {
         }
 
         return dictionary
-            .find(c => c.id == Object.keys(themes)
+            .find(c => c.id.toString() === Object.keys(themes)
                 .reduce((a,b) => {
                     if(themes[a] === themes[b]) {
-                        return dictionary.find(c2 => c2.id == a).short
-                            .localeCompare(dictionary.find(c2 => c2.id == b).short) > 0 ? b : a;
+                        return dictionary.find(c2 => c2.id.toString() === a).short
+                            .localeCompare(dictionary.find(c2 => c2.id.toString() === b).short) > 0 ? b : a;
                     } else {
                         return themes[a] > themes[b] ? a : b;
                     }
@@ -300,74 +300,74 @@ class Dashboard extends Component {
 
             <div className="section-title"><span>Grant Giving Themes</span></div>
             {Object.keys(found.t[year].c).length > 0 ? <div>
-            <div className="comparison-chooser">
-                Compare this funder’s data with
-                <CharityChooser
-                    onChange={this.onComparisonChanged}
-                    checkTheme={true}
-                    value={comparison && comparisonData}
-                    currCharity={found.n}
-                    year={year}
-                />
-            </div>
+                <div className="comparison-chooser">
+                    Compare this funder’s data with
+                    <CharityChooser
+                        onChange={this.onComparisonChanged}
+                        checkTheme={true}
+                        value={comparison && comparisonData}
+                        currCharity={found.n}
+                        year={year}
+                    />
+                </div>
 
-            <div className="charts">
-                <div>
-                    <div className="chart-text">
-                        <div className="chart-title">Causes</div>
-                        <div className="chart-top cause">
-                            <div className="number--title">{found.n}</div>
-                            <i className={`foundation--number fa fa-2x ${topThemes.causes.icon}`}/>
-                            <div>{topThemes.causes.short}</div>
-                        </div>
-                        {comparison &&
-                            <div className="chart-top-comparison cause">
-                                <div className="number--title">{comparison}</div>
-                                <i className={`foundation--number fa fa-2x ${topThemes.causesComparison.icon}`}/>
-                                <div>{topThemes.causesComparison.short}</div>
+                <div className="charts">
+                    <div>
+                        <div className="chart-text">
+                            <div className="chart-title">Causes</div>
+                            <div className="chart-top cause">
+                                <div className="number--title">{found.n}</div>
+                                <i className={`foundation--number fa fa-2x ${topThemes.causes.icon}`}/>
+                                <div>{topThemes.causes.short}</div>
                             </div>
-                        }
+                            {comparison &&
+                                <div className="chart-top-comparison cause">
+                                    <div className="number--title">{comparison}</div>
+                                    <i className={`foundation--number fa fa-2x ${topThemes.causesComparison.icon}`}/>
+                                    <div>{topThemes.causesComparison.short}</div>
+                                </div>
+                            }
+                        </div>
+                        <div className="chart" id="chart-c"/>
                     </div>
-                    <div className="chart" id="chart-c"/>
-                </div>
-                <div>
-                    <div className="chart" id="chart-b"/>
-                    <div className="chart-text">
-                        <div className="chart-title">Beneficiaries</div>
-                        <div className="chart-top beneficiary">
-                            <div className="number--title">{found.n}</div>
-                            <i className={`foundation--number fa fa-2x ${topThemes.beneficiaries.icon}`}/>
-                            <div>{topThemes.beneficiaries.short}</div>
+                    <div>
+                        <div className="chart" id="chart-b"/>
+                        <div className="chart-text">
+                            <div className="chart-title">Beneficiaries</div>
+                            <div className="chart-top beneficiary">
+                                <div className="number--title">{found.n}</div>
+                                <i className={`foundation--number fa fa-2x ${topThemes.beneficiaries.icon}`}/>
+                                <div>{topThemes.beneficiaries.short}</div>
+                            </div>
+                            {comparison &&
+                            <div className="chart-top-comparison beneficiary">
+                                <div className="number--title">{comparison}</div>
+                                <i className={`foundation--number fa fa-2x ${topThemes.beneficiariesComparison.icon}`}/>
+                                <div>{topThemes.beneficiariesComparison.short}</div>
+                            </div>
+                            }
                         </div>
-                        {comparison &&
-                        <div className="chart-top-comparison beneficiary">
-                            <div className="number--title">{comparison}</div>
-                            <i className={`foundation--number fa fa-2x ${topThemes.beneficiariesComparison.icon}`}/>
-                            <div>{topThemes.beneficiariesComparison.short}</div>
+                    </div>
+                    <div>
+                        <div className="chart-text">
+                            <div className="chart-title">Operations</div>
+                            <div className="chart-top operation">
+                                <div className="number--title">{found.n}</div>
+                                <i className={`foundation--number fa fa-2x ${topThemes.operations.icon}`}/>
+                                <div>{topThemes.operations.short}</div>
+                            </div>
+                            {comparison &&
+                            <div className="chart-top-comparison operation">
+                                <div className="number--title">{comparison}</div>
+                                <i className={`foundation--number fa fa-2x ${topThemes.operationsComparison.icon}`}/>
+                                <div>{topThemes.operationsComparison.short}</div>
+                            </div>
+                            }
                         </div>
-                        }
+                        <div className="chart" id="chart-o"/>
                     </div>
                 </div>
-                <div>
-                    <div className="chart-text">
-                        <div className="chart-title">Operations</div>
-                        <div className="chart-top operation">
-                            <div className="number--title">{found.n}</div>
-                            <i className={`foundation--number fa fa-2x ${topThemes.operations.icon}`}/>
-                            <div>{topThemes.operations.short}</div>
-                        </div>
-                        {comparison &&
-                        <div className="chart-top-comparison operation">
-                            <div className="number--title">{comparison}</div>
-                            <i className={`foundation--number fa fa-2x ${topThemes.operationsComparison.icon}`}/>
-                            <div>{topThemes.operationsComparison.short}</div>
-                        </div>
-                        }
-                    </div>
-                    <div className="chart" id="chart-o"/>
-                </div>
-            </div>
-                </div> : <div>Cannot view themes for this funder</div>}
+            </div> : <div className="no-data">No theme data available for this funder</div>}
             <div className="bottom-note">
                 <div>Note: recipients may have more than one theme description within each category and data may not be provided for full calendar years, see <span className="link-rev" onClick={this.onAboutClicked}>About</span> for limitations in this data</div>
             </div>
