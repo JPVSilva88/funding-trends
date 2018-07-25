@@ -298,8 +298,8 @@ class Dashboard extends Component {
                 end={bubbleExpand.indexOf("funders") > -1 ? 15 : 5}
             />
 
-            {Object.keys(found.t[year].c).length > 0 && <div>
             <div className="section-title"><span>Grant Giving Themes</span></div>
+            {Object.keys(found.t[year].c).length > 0 ? <div>
             <div className="comparison-chooser">
                 Compare this funder’s data with
                 <CharityChooser
@@ -367,7 +367,7 @@ class Dashboard extends Component {
                     <div className="chart" id="chart-o"/>
                 </div>
             </div>
-                </div>}
+                </div> : <div>Cannot view themes for this funder</div>}
             <div className="bottom-note">
                 <div>Note: recipients may have more than one theme description within each category and data may not be provided for full calendar years, see <span className="link-rev" onClick={this.onAboutClicked}>About</span> for limitations in this data</div>
             </div>

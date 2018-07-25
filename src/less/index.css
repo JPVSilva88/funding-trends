@@ -750,3 +750,36 @@ div.Select-placeholder {
   width: 100%;
   text-align: left;
 }
+.about-creators {
+  display: flex;
+  justify-content: space-around;
+}
+.joao,
+.oliver {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.joao > .about-image {
+  background: url('../joao.jpg') no-repeat top center;
+  background-size: cover;
+  border: solid 3px #F3832E;
+}
+.oliver > .about-image {
+  background: url('../oliver.jpeg') no-repeat top center;
+  background-size: cover;
+  border: solid 3px #3dadb2;
+}
+.about-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.about-name {
+  margin-bottom: 10px;
+  font-weight: bold;
+}

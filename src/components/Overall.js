@@ -183,13 +183,13 @@ class Overall extends Component {
         const moneySort = [].concat(data.foundations).filter((f) => f.y[year]).sort((a, b) => b.y[year].m - a.y[year].m);
 
         const totalFunders = data.foundations.reduce((acc, f) => {
-            return acc + f.y[year] ? 1 : 0;
+            return acc += f.y[year] ? 1 : 0;
         }, 0);
         const totalGrants = data.foundations.reduce((acc, f) => {
-            return acc + f.y[year] ? f.y[year].c : 0;
+            return acc += f.y[year] ? f.y[year].c : 0;
         }, 0);
         const totalMoney = data.foundations.reduce((acc, f) => {
-            return acc + f.y[year] ? f.y[year].m : 0;
+            return acc += f.y[year] ? f.y[year].m : 0;
         }, 0);
         const maxCause = Object.keys(data.themes[year].c).reduce((acc, c) => {
             return Math.max(acc, data.themes[year].c[c]);
@@ -228,7 +228,7 @@ class Overall extends Component {
                 seeMoreLabel={bubbleExpand.indexOf("overallMoney") > -1 ? "See Less" : "See More"}
                 end={bubbleExpand.indexOf("overallMoney") > -1 ? 15 : 5}
             />
-            <div className="section-title"><span>Top Recipients by Grant Received</span></div>
+            <div className="section-title"><span>Top Recipients by Grants Received</span></div>
             <BubbleData
                 colorClass="bubble-alt"
                 list={data.averageFunders[year].top}

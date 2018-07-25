@@ -17,6 +17,7 @@
 .env.production.local
 .idea/
 *-compiled*
+/src/less/index.css
 
 npm-debug.log*
 yarn-debug.log*
