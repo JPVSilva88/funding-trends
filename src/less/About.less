@@ -26,16 +26,37 @@
   }
 
 
-  > div:first-child > .about-help--title > div {
-    background: @color;
+  > div:first-child {
+    > .about-help--title > div {
+      background: @color;
+    }
+
+    > .about-help--content > div:first-child {
+      color: lighten(@color, 25%);
+      font-weight: bold;
+    }
   }
 
-  > div:nth-child(2) > .about-help--title > div {
-    background: @color2;
+  > div:nth-child(2) {
+    > .about-help--title > div {
+      background: @color2;
+    }
+
+    > .about-help--content > div:first-child {
+      color: lighten(@color2, 25%);
+      font-weight: bold;
+    }
   }
 
-  > div:last-child > .about-help--title > div {
-    background: @color3;
+  > div:last-child {
+    > .about-help--title > div {
+      background: @color3;
+    }
+
+    > .about-help--content > div:first-child {
+      color: lighten(@color3, 35%);
+      font-weight: bold;
+    }
   }
 }
 
@@ -86,27 +107,46 @@
   text-align: center;
 }
 
-.joao > .about-image {
-  background: url('../joao.jpg') no-repeat top center;
-  background-size: cover;
-  border: solid 3px @color;
+.joao {
+  > .about-name {
+    color: lighten(@color, 25%);
+  }
+
+  > .about-image {
+    background: url('../joao.jpg') no-repeat top center;
+    background-size: cover;
+    border: solid 4px @color;
+  }
 }
 
-.oliver > .about-image {
-  background: url('../oliver.jpeg') no-repeat top center;
-  background-size: cover;
-  border: solid 3px @color2;
+.oliver {
+  > .about-name {
+    color: lighten(@color2, 25%);
+  }
+
+  > .about-image {
+    background: url('../oliver.jpeg') no-repeat top center;
+    background-size: cover;
+    border: solid 4px @color2;
+  }
 }
 
 .about-image {
   width: 200px;
   height: 200px;
   border-radius: 100px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   margin-top: 20px;
 }
 
 .about-name {
-  margin-bottom: 10px;
+  font-size: larger;
+  margin-bottom: 15px;
   font-weight: bold;
+}
+
+.about-twitter > i {
+  margin-right: 5px;
+  color: #1DA1F2;
+  margin-bottom: 15px;
 }

@@ -234,7 +234,7 @@ class Overall extends Component {
                 list={data.averageFunders[year].top}
                 getValue={(f) => f.m}
             />
-            <div className="section-title"><span>Key Statistics</span></div>
+            <div className="section-title"><span>Funder Statistics</span></div>
             <div className="subsection-title">Distribution of Funders by Average Grant Size</div>
             <div className="average-grants">
                 <NumberData

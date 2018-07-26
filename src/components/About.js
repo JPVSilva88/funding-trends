@@ -27,23 +27,41 @@ class About extends Component {
             <div className="about-content">
                 <div className="section-title"><span>What is it?</span></div>
                 <div>Funding Trends helps people understand grant-making data from <a className="link" href="http://www.threesixtygiving.com" target="_blank">360Giving</a> in a new and exciting way. Users can zoom out on the data to see the overall funding trends and then zoom in to take a closer look at dedicated dashboards for each funder.</div>
-                <div>It uses data from 360Giving’s <a className="link" href="http://grantnav.threesixtygiving.org/" target="_blank">GrantNav</a>, as well as Charity Commission data from the <a className="link" href="https://charitybase.uk/" target="_blank">CharityBase</a> database.</div>
+                <div style={{marginTop: "15px"}}>It uses data from 360Giving’s <a className="link" href="http://grantnav.threesixtygiving.org/" target="_blank">GrantNav</a>, as well as Charity Commission data from the <a className="link" href="https://charitybase.uk/" target="_blank">CharityBase</a> database.</div>
                 <div className="section-title"><span>Who can it help?</span></div>
                 <div className="about-help">
                     <div>
                         <div className="about-help--title"><div>Funders</div></div>
-                        <div>Undertake strategic reviews: see how your funding has changed over the years and how your foundation compares to others</div>
-                        <div>Communicate your data: use your dedicated dashboard to share key statistics about your giving with trustees, staff and recipients</div>
+                        <div className="about-help--content">
+                            <div>Undertake strategic reviews</div>
+                            <div>See how your funding has changed over the years and how your foundation compares to others</div>
+                        </div>
+                        <div className="about-help--content">
+                            <div>Communicate your data</div>
+                            <div>Use your dedicated dashboard to share key statistics about your giving with trustees, staff and recipients</div>
+                        </div>
                     </div>
                     <div>
                         <div className="about-help--title"><div>Charities or other user-led organisations</div></div>
-                        <div>Research new funding sources: find out more about potential funding prospects and their approach to grant-making</div>
-                        <div>Learn more about your current funders: see how they compare to other funders and view other organisations that are also funded</div>
+                        <div className="about-help--content">
+                            <div>Research new funding sources</div>
+                            <div>Find out more about potential funding prospects and their approach to grant-making</div>
+                        </div>
+                        <div className="about-help--content">
+                            <div>Learn more about your current funders</div>
+                            <div>See how they compare to other funders and view other organisations that are also funded</div>
+                        </div>
                     </div>
                     <div>
                         <div className="about-help--title"><div>Researchers</div></div>
-                        <div><span className="about-bold color">Understand common practice among funders:</span> examine topics such as popular focus themes, number of recipients and size of grants</div>
-                        <div>Uncover patterns: discover changes in grant-making over the years at the overall and individual level</div>
+                        <div className="about-help--content">
+                            <div>Understand common practice among funders</div>
+                            <div>Examine topics such as popular focus themes, number of recipients and size of grants</div>
+                        </div>
+                        <div className="about-help--content">
+                            <div>Uncover new patterns</div>
+                            <div>Discover changes in grant-making over the years at the overall and individual level</div>
+                        </div>
                     </div>
                 </div>
                 <div className="section-title"><span>What are the limitations of this data?</span></div>
@@ -62,11 +80,19 @@ class About extends Component {
                     <div className="joao">
                         <div className="about-image"/>
                         <div className="about-name">João Silva</div>
+                        <div className="about-twitter">
+                            <i className="fa fa-lg fa-twitter"/>
+                            <a className="link" href="https://twitter.com/JPVSilva88" target="_blank">@JPVSilva88</a>
+                        </div>
                         <div>João is a frontend developer. Originally from Portugal, he has worked in his field for companies in London and Berlin. He has created several graphics visualising data from sporting statistics, but this is his first project for the social sector.</div>
                     </div>
                     <div className="oliver">
                         <div className="about-image"/>
                         <div className="about-name">Oliver Carrington</div>
+                        <div className="about-twitter">
+                            <i className="fa fa-lg fa-twitter"/>
+                            <a className="link" href="https://twitter.com/olliecarrington" target="_blank">@olliecarrington</a>
+                        </div>
                         <div>Oliver is a charity sector professional with experience in the UK and Japan. He has worked as a grant manager for foundations and advised funders as a consultant at NPC. He's also authored reports on <a className="link" href="https://www.thinknpc.org/publications/data-visualisation-whats-it-all-about/" target="_blank">data visualisation</a>, <a className="link" href="https://www.thinknpc.org/publications/funders-influence-for-good/" target="_blank">campaigning for grant-makers</a> and <a className="link" href="https://www.thinknpc.org/publications/funders-grantee-effectiveness/" target="_blank">funding capacity building</a>.</div>
                     </div>
                 </div>
@@ -74,7 +100,6 @@ class About extends Component {
                     <div>This tool is freely available under the <a className="link-rev" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons 4.0 licence</a>.</div>
                     <div>The grant funding data comes from <a className="link-rev" href="http://grantnav.threesixtygiving.org/datasets/" target="_blank">GrantNav</a>, a <a className="link-rev" href="http://www.threesixtygiving.org/" target="_blank">360Giving</a> application released under the terms of the <a className="link-rev" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution Sharealike licence (CC-BY-SA)</a>.</div>
                     <div>The Charity Commission data for the themes comes from <a className="link-rev" href="https://charitybase.uk/" target="_blank">CharityBase</a> The original data comes from the <a className="link-rev" href="http://data.charitycommission.gov.uk/" target="_blank">Charity Commission data files</a> provided under an <a className="link-rev" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" target="_blank">Open Government Licence</a>.</div>
-                    <div>Icon stuff <a className="link-rev" href="https://charitybase.uk/" target="_blank">CharityBase</a> The original data comes from the <a className="link-rev" href="http://data.charitycommission.gov.uk/" target="_blank">Charity Commission data files</a> provided under an <a className="link-rev" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" target="_blank">Font Awesome</a>.</div>
                 </div>
             </div>
         </div>;
