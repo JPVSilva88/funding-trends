@@ -61,7 +61,7 @@ class Overall extends Component {
         this.startChart();
     }
 
-    getChartOptions(chartId, interval, max, property, isCurrency = false) {
+    getChartOptions(chartId, interval, max, getValue, isCurrency = false) {
         const { year } = this.props;
         const number = [];
         for(var i = 0; i < max; i += interval) {
@@ -86,7 +86,7 @@ class Overall extends Component {
                 return;
             }
 
-            const numObj = number.find((n) => n.start <= f.y[year][property] && n.end >= f.y[year][property]);
+            const numObj = number.find((n) => n.start <= getValue(f) && n.end >= getValue(f));
             numObj.value++;
             numObj.list.push(f);
         });
@@ -131,13 +131,13 @@ class Overall extends Component {
             tooltip: {
                 contents: (d) => {
                     var text = "<div class='tooltip-text'>";
-                    number[d[0].index].list.sort((a,b) => b.y[year][property] - a.y[year][property]).forEach((l) => {
+                    number[d[0].index].list.sort((a,b) => getValue(b) - getValue(a)).forEach((l) => {
                         text += "<div class='tooltip-row'>";
                         text += "<div>";
                         text += l.n;
                         text += "</div>";
                         text += "<div>";
-                        text += Helper.getDisplayNumber(l.y[year][property], isCurrency, 2);
+                        text += Helper.getDisplayNumber(getValue(l), isCurrency, 2);
                         text += "</div>";
                         text += "</div>";
                     });
@@ -152,19 +152,20 @@ class Overall extends Component {
      * Generates the chart.
      */
     startChart() {
+        const { year } = this.props;
         c3.generate(
             this.getChartOptions(
                 "count",
                 20,
                 300,
-                'c'
+                (i) => i.y[year].c
             ));
         c3.generate(
             this.getChartOptions(
                 "money",
-                250000,
-                4000000,
-                'm',
+                5000,
+                75000,
+                (i) => i.y[year].m / i.y[year].c,
                 true
             ));
     }
@@ -233,9 +234,13 @@ class Overall extends Component {
                 colorClass="bubble-alt"
                 list={data.averageFunders[year].top}
                 getValue={(f) => f.m}
+                seeMore={() => this.props.setBubbleExpand("overallGrants")}
+                seeMoreLabel={bubbleExpand.indexOf("overallGrants") > -1 ? "See Less" : "See More"}
+                end={bubbleExpand.indexOf("overallGrants") > -1 ? 15 : 5}
             />
             <div className="section-title"><span>Funder Statistics</span></div>
-            <div className="subsection-title">Distribution of Funders by Average Grant Size</div>
+            <div className="subsection-title">Distribution of Funders by Total Grants Awarded</div>
+            <div className="note">Hover over the bars to see the funders</div>
             <div className="average-grants">
                 <NumberData
                     value={totalGrants / totalFunders}
@@ -244,7 +249,8 @@ class Overall extends Component {
                 />
                 <div className="chart" id="chart-count"/>
             </div>
-            <div className="subsection-title">Distribution of Funders by Total Grants Awarded</div>
+            <div className="subsection-title">Distribution of Funders by Average Grant Size</div>
+            <div className="note">Hover over the bars to see the funders</div>
             <div className="average-money">
                 <NumberData
                     value={totalMoney / totalGrants}
@@ -254,10 +260,10 @@ class Overall extends Component {
                 />
                 <div className="chart" id="chart-money"/>
             </div>
-            <div className="section-title"><span>Spending on Themes</span></div>
+            <div className="section-title"><span>Spending on Themes Heatmap</span></div>
             <div className="subsection-title">Causes</div>
             <Heatmap
-                list={Object.keys(data.themes[year].c)}
+                list={Object.keys(data.themes[year].c).sort((a,b) => data.themes[year].c[b] - data.themes[year].c[a])}
                 getObject={(c) => causes.find((c2) => c2.id == c)}
                 getValue={(c) => data.themes[year].c[c]}
                 maxValue={maxCause}
@@ -265,7 +271,7 @@ class Overall extends Component {
             />
             <div className="subsection-title">Users</div>
             <Heatmap
-                list={Object.keys(data.themes[year].b)}
+                list={Object.keys(data.themes[year].b).sort((a,b) => data.themes[year].b[b] - data.themes[year].b[a])}
                 getObject={(b) => beneficiaries.find((b2) => b2.id == b)}
                 getValue={(b) => data.themes[year].b[b]}
                 maxValue={maxBeneficiary}
@@ -273,7 +279,7 @@ class Overall extends Component {
             />
             <div className="subsection-title">Operations</div>
             <Heatmap
-                list={Object.keys(data.themes[year].o)}
+                list={Object.keys(data.themes[year].o).sort((a,b) => data.themes[year].o[b] - data.themes[year].o[a])}
                 getObject={(o) => operations.find((o2) => o2.id == o)}
                 getValue={(o) => data.themes[year].o[o]}
                 maxValue={maxOperation}

@@ -28,7 +28,6 @@
 
     > div:last-child {
       border-bottom: 2px solid @textcolor;
-      font-size: small;
     }
   }
 }
@@ -47,23 +46,23 @@
 
 .heatmap-builder(@i) {
   .heatmap-@{i}.cause {
-    background-color: lighten(@cause, (10-@i) * 4);
+    background-color: lighten(@cause, (10-@i) * 4.5);
 
-    & when (@i < 4) {
+    & when (@i < 6) {
       color: @background;
     }
   }
   .heatmap-@{i}.beneficiary {
-    background-color: lighten(@beneficiary, (10-@i) * 4);
+    background-color: lighten(@beneficiary, (10-@i) * 4.5);
 
-    & when (@i < 4) {
+    & when (@i < 8) {
       color: @background;
     }
   }
   .heatmap-@{i}.operation {
-    background-color: lighten(@operation, (10-@i) * 4);
+    background-color: lighten(@operation, (10-@i) * 4.5);
 
-    & when (@i < 4) {
+    & when (@i < 6) {
       color: @background;
     }
   }
