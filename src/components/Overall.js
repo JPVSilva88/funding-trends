@@ -177,8 +177,6 @@ class Overall extends Component {
     onPageChanged(page) {
         this.props.setPage(page);
         this.props.bubbleExpand.forEach((be) => this.props.setBubbleExpand(be));
-
-        window.history.pushState(null, 'title', "/" + page);
     }
 
     render() {

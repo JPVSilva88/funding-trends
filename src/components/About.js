@@ -23,7 +23,6 @@ class About extends Component {
 
     onBackClicked() {
         this.props.setPage("home");
-        window.history.pushState(null, 'title', "/home");
     }
 
     render() {

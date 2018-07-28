@@ -39,22 +39,16 @@ class MainPage extends Component {
     onOverallClick = () => {
         this.props.setPage("overall");
         this.props.setYear(2017);
-
-        window.history.pushState(null, 'title', "/overall");
     };
 
     onCharityChange = (newValue) => {
         this.props.setCharity(newValue);
         this.props.setPage("foundation");
         this.props.setYear(Object.keys(data.foundations.find(f => f.n === newValue).y).sort((a,b) => b.localeCompare(a))[0]);
-
-        window.history.pushState(null, 'title', `/foundation/${newValue}`);
     };
 
     onAboutClick = () => {
         this.props.setPage("about");
-
-        window.history.pushState(null, 'title', "/about");
     };
 
     render() {
