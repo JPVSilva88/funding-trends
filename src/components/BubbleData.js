@@ -16,7 +16,9 @@ const BubbleData = ({ list, getValue, start = 0, end = 5, colorClass, seeMore, s
                 </div>;
             })}
         </div>
-        {seeMore && <div className="see-more"><span className="link-rev" onClick={seeMore}>{seeMoreLabel}</span></div>}
+        {seeMore && <div className="see-more">
+            <span className="link-rev" onClick={seeMore}>{seeMoreLabel}</span>
+        </div>}
     </div>
 );
 

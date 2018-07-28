@@ -1,0 +1,124 @@
+.dashboard {
+  padding: 75px 10px 10px 10px;
+}
+
+.dashboard--top {
+  display: flex;
+  border-bottom: solid 1px @textcolor;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  left: 0;
+  padding: 10px;
+  z-index: 1;
+  align-items: center;
+}
+
+.dashboard--title {
+  text-align: left;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: xx-large;
+  text-transform: uppercase;
+}
+
+.back {
+  margin-left: 5px;
+  cursor: pointer;
+  height: 46px;
+  width: 46px;
+  border-radius: 23px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > i {
+    margin-left: -6px;
+    margin-bottom: -2px;
+  }
+}
+
+.section-title {
+  text-transform: uppercase;
+  font-size: larger;
+  margin: 20px 10px;
+  display: flex;
+  justify-content: center;
+
+  background: linear-gradient(@background 0%, @background 49%, @textcolor 50%, @textcolor 51%, @background 52%, @background 100%);
+
+  > span {
+    background: @background;
+    padding: 5px 30px;
+    border: 1px solid @textcolor;
+    border-radius: 4px;
+  }
+}
+
+.subsection-title {
+  font-size: large;
+  margin: 20px 10px;
+  text-align: left;
+}
+
+.bottom-note {
+  display: flex;
+  margin-top: 10px;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.bottom-note > div {
+  font-size: small;
+  text-align: right;
+  color: #999;
+  width: 500px;
+}
+
+///// YEAR SELECTOR /////
+
+.year-selector {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  font-size: 15px;
+  margin-right: 20px;
+}
+
+.year-selector > div {
+  width: 80px;
+  margin-top: 5px;
+  text-align: left;
+  flex-shrink: 0;
+}
+
+
+.link-rev {
+  text-decoration: underline;
+  cursor: pointer;
+  color: @gray;
+
+  &:hover {
+    color: @textcolor;
+  }
+}
+
+.link {
+  text-decoration: underline;
+  cursor: pointer;
+  color: @textcolor;
+
+  &:hover {
+    color: @gray;
+  }
+}
+
+.no-data {
+  text-align: left;
+  margin-left: 10px;
+}

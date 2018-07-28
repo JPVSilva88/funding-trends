@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../actions/index.js';
 
-import data from '../data.json';
+import data from '../data/data.json';
 import CharityChooser from './CharityChooser';
-
-//import 'font-awesome/css/font-awesome.min.css';
 
 const mapStateToProps = (state) => {
     return {
@@ -44,6 +42,7 @@ class MainPage extends Component {
     onCharityChange = (newValue) => {
         this.props.setCharity(newValue);
         this.props.setPage("foundation");
+        // Get the highest year of the selected charity
         this.props.setYear(Object.keys(data.foundations.find(f => f.n === newValue).y).sort((a,b) => b.localeCompare(a))[0]);
     };
 

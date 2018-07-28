@@ -1,8 +1,3 @@
-/* Define your initial state here.
- *
- * If you change the type from object to something else, do not forget to update
- * src/container/App.js accordingly.
- */
 import { SET_PAGE } from '../actions/const';
 
 function reducer(state = "home", action) {
@@ -13,7 +8,7 @@ function reducer(state = "home", action) {
     }
 
     default: {
-      /* Return original state if no actions were consumed. */
+      // Return original state if no actions were consumed
       return state;
     }
   }

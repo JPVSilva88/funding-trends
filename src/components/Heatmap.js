@@ -11,7 +11,7 @@ const Heatmap = ({ list, getObject, getValue, maxValue, colorClass }) => (
                     <i className={`fa ${obj.icon}`}/>
                     <span>{obj.short}</span>
                 </div>
-                <div className={`heatmap-${parseInt(((val * 100) / maxValue) / 10)} ${colorClass}`}>
+                <div className={`heatmap-${parseInt(((val * 100) / maxValue) / 10, 10)} ${colorClass}`}>
                     {Helper.getDisplayNumber(val, true)}
                 </div>
             </div>;

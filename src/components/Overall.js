@@ -8,14 +8,14 @@ import 'font-awesome/css/font-awesome.min.css';
 import 'react-select/dist/react-select.css';
 import 'c3/c3.min.css';
 
-import data from '../data.json';
+import data from '../data/data.json';
 import BubbleData from './BubbleData';
 import NumberData from './NumberData';
 import Heatmap from './Heatmap';
 import Helper from '../Helper';
-import causes from '../causes.json';
-import beneficiaries from '../beneficiaries.json';
-import operations from '../operations.json';
+import causes from '../data/causes.json';
+import beneficiaries from '../data/beneficiaries.json';
+import operations from '../data/operations.json';
 
 const mapStateToProps = (state) => {
     return {
@@ -41,7 +41,7 @@ class Overall extends Component {
     constructor(props) {
         super(props);
 
-        this.options = [2013,2014,2015,2016,2017].map((y) => {
+        this.years = [2013,2014,2015,2016,2017].map((y) => {
             return {
                 label: y,
                 value: y
@@ -61,9 +61,19 @@ class Overall extends Component {
         this.startChart();
     }
 
+    /**
+     * Gets the configuration of the chart
+     * @param {string} chartId The id of the chart
+     * @param {number} interval The interval between x axis ticks
+     * @param {number} max The maximum value on the x axis
+     * @param {Function} getValue Function that returns a value from a foundation
+     * @param {boolean} isCurrency True if the chart displays a currency, false otherwise
+     * @returns c3 chart options object
+     */
     getChartOptions(chartId, interval, max, getValue, isCurrency = false) {
         const { year } = this.props;
         const number = [];
+        // Create all the possible bars
         for(var i = 0; i < max; i += interval) {
             number.push({
                 value: 0,
@@ -74,6 +84,7 @@ class Overall extends Component {
             });
         }
 
+        // Add the last bar from max to infinity
         number.push({
             value: 0,
             start: max,
@@ -81,6 +92,8 @@ class Overall extends Component {
             label: `${Helper.getDisplayNumber(max, isCurrency, 2)}+`,
             list: []
         });
+
+        // For a foundation, find out to what bar it belongs to
         data.foundations.forEach((f) => {
             if(!f.y[year]) {
                 return;
@@ -149,7 +162,7 @@ class Overall extends Component {
     }
 
     /**
-     * Generates the chart.
+     * Generates the charts.
      */
     startChart() {
         const { year } = this.props;
@@ -170,10 +183,18 @@ class Overall extends Component {
             ));
     }
 
+    /**
+     * Called when the year drop down changes
+     * @param newValue New selected value
+     */
     onYearChanged(newValue) {
         this.props.setYear(newValue.value);
     }
 
+    /**
+     * Called when the page is changed
+     * @param {string} page New page
+     */
     onPageChanged(page) {
         this.props.setPage(page);
         this.props.bubbleExpand.forEach((be) => this.props.setBubbleExpand(be));
@@ -183,6 +204,7 @@ class Overall extends Component {
         const { year, bubbleExpand } = this.props;
         const moneySort = [].concat(data.foundations).filter((f) => f.y[year]).sort((a, b) => b.y[year].m - a.y[year].m);
 
+        // Add the total number of funders, grants and money for a given year
         const totalFunders = data.foundations.reduce((acc, f) => {
             return acc += f.y[year] ? 1 : 0;
         }, 0);
@@ -192,6 +214,8 @@ class Overall extends Component {
         const totalMoney = data.foundations.reduce((acc, f) => {
             return acc += f.y[year] ? f.y[year].m : 0;
         }, 0);
+
+        // Find the maximum theme values
         const maxCause = Object.keys(data.themes[year].c).reduce((acc, c) => {
             return Math.max(acc, data.themes[year].c[c]);
         }, -Infinity);
@@ -208,12 +232,12 @@ class Overall extends Component {
                     <i className="fa fa-chevron-left fa-2x"/>
                 </div>
                 <div className="dashboard--title">
-                    <div className="foundation--name">Overall Funding Trends</div>
+                    Overall Funding Trends
                 </div>
                 <div className="year-selector">
                     Data for Year
                     <Select
-                        options={this.options}
+                        options={this.years}
                         value={year}
                         onChange={this.onYearChanged}
                         clearable={false}
@@ -264,7 +288,7 @@ class Overall extends Component {
             <div className="subsection-title">Causes</div>
             <Heatmap
                 list={Object.keys(data.themes[year].c).sort((a,b) => data.themes[year].c[b] - data.themes[year].c[a])}
-                getObject={(c) => causes.find((c2) => c2.id == c)}
+                getObject={(c) => causes.find((c2) => c2.id.toString() === c)}
                 getValue={(c) => data.themes[year].c[c]}
                 maxValue={maxCause}
                 colorClass="cause"
@@ -272,7 +296,7 @@ class Overall extends Component {
             <div className="subsection-title">Users</div>
             <Heatmap
                 list={Object.keys(data.themes[year].b).sort((a,b) => data.themes[year].b[b] - data.themes[year].b[a])}
-                getObject={(b) => beneficiaries.find((b2) => b2.id == b)}
+                getObject={(b) => beneficiaries.find((b2) => b2.id.toString() === b)}
                 getValue={(b) => data.themes[year].b[b]}
                 maxValue={maxBeneficiary}
                 colorClass="beneficiary"
@@ -280,7 +304,7 @@ class Overall extends Component {
             <div className="subsection-title">Operations</div>
             <Heatmap
                 list={Object.keys(data.themes[year].o).sort((a,b) => data.themes[year].o[b] - data.themes[year].o[a])}
-                getObject={(o) => operations.find((o2) => o2.id == o)}
+                getObject={(o) => operations.find((o2) => o2.id.toString() === o)}
                 getValue={(o) => data.themes[year].o[o]}
                 maxValue={maxOperation}
                 colorClass="operation"

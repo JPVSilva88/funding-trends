@@ -1,14 +1,12 @@
-'use strict';
-
-
 class Helper {
   /**
    * Returns the a shorter version of the value to display
    *
    * @param value The numeric value
    * @param isCurrency True if the number is a currency, false otherwise
+   * @param maxDecimals The maximum number of digits to display
    */
-  static getDisplayNumber(value, isCurrency, maxDigits = 1) {
+  static getDisplayNumber(value, isCurrency, maxDecimals = 1) {
     if(!value && value !== 0) {
       return value;
     }
@@ -28,7 +26,7 @@ class Helper {
             {
               style: isCurrency ? 'currency' : 'decimal',
               currency: 'GBP',
-              maximumFractionDigits: maxDigits,
+              maximumFractionDigits: maxDecimals,
               minimumFractionDigits: 0
             }).format(value) + suffix;
   }

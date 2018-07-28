@@ -1,7 +1,3 @@
-/**
- * Created by jsilva on 14/09/17.
- */
-
 export const SET_CHARITY = "SET_CHARITY";
 export const SET_COMPARISON = "SET_COMPARISON";
 export const SET_PAGE = "SET_PAGE";

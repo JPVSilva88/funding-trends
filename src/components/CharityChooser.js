@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Select from 'react-select';
 
-import data from '../data.json';
+import data from '../data/data.json';
 
 import 'react-select/dist/react-select.css';
 

@@ -13,10 +13,10 @@ import CharityChooser from './CharityChooser';
 import BubbleData from './BubbleData';
 import NumberData from './NumberData';
 
-import data from '../data.json';
-import causes from '../causes.json';
-import beneficiaries from '../beneficiaries.json';
-import operations from '../operations.json';
+import data from '../data/data.json';
+import causes from '../data/causes.json';
+import beneficiaries from '../data/beneficiaries.json';
+import operations from '../data/operations.json';
 
 const mapStateToProps = (state) => {
     return {
@@ -47,9 +47,9 @@ class Dashboard extends Component {
     constructor(props) {
         super(props);
 
-        this.found = data.foundations.find((a) => a.n === props.charity);
+        this.charity = data.foundations.find((a) => a.n === props.charity);
 
-        this.options = Object.keys(this.found.y).map((y) => {
+        this.years = Object.keys(this.charity.y).map((y) => {
            return {
                label: y,
                value: y
@@ -72,7 +72,8 @@ class Dashboard extends Component {
 
     getThemeData(property, dictionary) {
         const { year, comparison } = this.props;
-        const foundData = this.found.t[year][property];
+        const charityName = this.charity.n;
+        const foundData = this.charity.t[year][property];
         var themeData;
 
         if(comparison) {
@@ -82,7 +83,7 @@ class Dashboard extends Component {
                 return {
                     name: t.name,
                     short: t.short,
-                    [this.found.n]: foundData[t.id] || 0,
+                    [charityName]: foundData[t.id] || 0,
                     [comparison]: comparisonData[t.id] || 0
                 }
             });
@@ -91,24 +92,38 @@ class Dashboard extends Component {
                 return {
                     name: t.name,
                     short: t.short,
-                    [this.found.n]: foundData[t.id] || 0
+                    [charityName]: foundData[t.id] || 0
                 }
             });}
 
         return themeData.sort((a,b) => {
-            const diff = b[this.found.n] - a[this.found.n];
+            const diff = b[charityName] - a[charityName];
+            // Order alphabetically if they have the same number
             return diff !== 0 ? diff : a.short.localeCompare(b.short);
         });
     }
 
     getChartOptions(jsonData, chartId) {
-        const dataValues = [this.found.n];
+        const dataValues = [this.charity.n];
         const axes = {
-            [this.found.n]: 'y2'
+            [this.charity.n]: 'y2'
         };
         if(this.props.comparison) {
             dataValues.push(this.props.comparison);
             axes[this.props.comparison] = 'y2';
+        }
+
+        var pattern;
+        switch(chartId) {
+            case "c":
+                pattern = ['#C32E9A', '#EDB7DD'];
+                break;
+            case "b":
+                pattern = ['#F3832E', '#FAD9C1'];
+                break;
+            default:
+                pattern = ['#3DADB2', '#A9DEE1'];
+                break;
         }
 
         return {
@@ -148,7 +163,7 @@ class Dashboard extends Component {
                 height: 60 + (jsonData.length * 25)
             },
             color: {
-                pattern: chartId === "c" ? ['#C32E9A', '#EDB7DD'] : chartId === "b" ? ['#F3832E', '#FAD9C1'] : ['#3DADB2', '#A9DEE1']
+                pattern: pattern
             },
             tooltip: {
                 show: false
@@ -160,7 +175,7 @@ class Dashboard extends Component {
     }
 
     /**
-     * Generates the chart.
+     * Generates the charts.
      */
     startChart() {
         c3.generate(
@@ -180,13 +195,22 @@ class Dashboard extends Component {
             ));
     }
 
+    /**
+     * Called when the charity to compare is changed
+     * @param newComparison New charity to compare with
+     */
     onComparisonChanged(newComparison) {
         this.props.setComparison(newComparison);
     }
 
+    /**
+     * Called when the selected year is changed
+     * @param newValue The new selected year
+     */
     onYearChanged(newValue) {
         const { comparison } = this.props;
         if(comparison) {
+            // Clear the comparison if it does not have the selected year
             const comparisonData = data.foundations.find((a) => a.n === this.props.comparison);
 
             if(!comparisonData.y[newValue.value]) {
@@ -197,6 +221,13 @@ class Dashboard extends Component {
         this.props.setYear(newValue.value);
     }
 
+    /**
+     * Finds the top theme
+     * @param foundation Foundation to look through
+     * @param dictionary The dictionary of the respective theme
+     * @param property The property of the theme in the foundation object
+     * @returns {*} The top theme
+     */
     findTopTheme(foundation, dictionary, property) {
         const { year } = this.props;
         const themes = foundation.t[year][property];
@@ -204,12 +235,14 @@ class Dashboard extends Component {
             return;
         }
 
+        // If the themes have the same value order them alphabetically
         return dictionary
-            .find(c => c.id.toString() === Object.keys(themes)
+            .find(theme => theme.id.toString() === Object.keys(themes)
                 .reduce((a,b) => {
                     if(themes[a] === themes[b]) {
-                        return dictionary.find(c2 => c2.id.toString() === a).short
-                            .localeCompare(dictionary.find(c2 => c2.id.toString() === b).short) > 0 ? b : a;
+                        const themeA = dictionary.find(theme2 => theme2.id.toString() === a).short;
+                        const themeB = dictionary.find(theme2 => theme2.id.toString() === b).short;
+                        return themeA.localeCompare(themeB) > 0 ? b : a;
                     } else {
                         return themes[a] > themes[b] ? a : b;
                     }
@@ -225,7 +258,7 @@ class Dashboard extends Component {
     render() {
         const { charity, year, comparison, bubbleExpand } = this.props;
         const moneySort = [].concat(data.foundations).filter((f) => f.y[year]).sort((a, b) => b.y[year].m - a.y[year].m);
-        const found = this.found;
+        const found = this.charity;
         const index = moneySort.findIndex((a) => a.n === charity);
         const topThemes = {
             causes: this.findTopTheme(found, causes, 'c'),
@@ -248,12 +281,12 @@ class Dashboard extends Component {
                     <i className="fa fa-chevron-left fa-2x"/>
                 </div>
                 <div className="dashboard--title">
-                    <div className="foundation--name">{found.n}</div>
+                    {found.n}
                 </div>
                 <div className="year-selector">
                     Data for Year
                     <Select
-                        options={this.options}
+                        options={this.years}
                         value={year}
                         onChange={this.onYearChanged}
                         clearable={false}
@@ -333,7 +366,7 @@ class Dashboard extends Component {
                     <div>
                         <div className="chart" id="chart-b"/>
                         <div className="chart-text">
-                            <div className="chart-title">Beneficiaries</div>
+                            <div className="chart-title">Users</div>
                             <div className="chart-top beneficiary">
                                 <div className="number--title">{found.n}</div>
                                 <i className={`foundation--number fa fa-2x ${topThemes.beneficiaries.icon}`}/>
