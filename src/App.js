@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import actions from './actions/index.js';
 import { connect } from 'react-redux';
 
 import './less/index.css';
 
+import data from './data.json';
 import MainPage from './components/MainPage.js';
 import Overall from './components/Overall.js';
 import Dashboard from './components/Dashboard.js';
@@ -14,13 +16,47 @@ const mapStateToProps = (state) => {
   };
 };
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setPage: (name) => {
+      dispatch(actions.setPage(name));
+    },
+    setYear: (year) => {
+      dispatch(actions.setYear(year));
+    },
+    setCharity: (charity) => {
+      dispatch(actions.setCharity(charity));
+    }
+  };
+};
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.routingManipulator(null, props);
+    window.onpopstate = this.routingManipulator.bind(this);
+  }
+
+  routingManipulator(event, props = this.props) {
+    let menuStrings = window.location.pathname.split('/');
+    if(menuStrings[1]) {
+      props.setPage(menuStrings[1]);
+
+      if(menuStrings[2]) {
+        const found = data.foundations.find((a) => a.n === menuStrings[2]);
+        if(found) {
+          props.setCharity(menuStrings[2]);
+        }
+      }
+    } else {
+      props.setPage("home");
+    }
+  }
+
   render() {
     var pageComponent;
     switch(this.props.page) {
-      case "home":
-        pageComponent = <MainPage/>;
-        break;
       case "foundation":
         pageComponent = <Dashboard/>;
         break;
@@ -29,6 +65,9 @@ class App extends Component {
         break;
       case "about":
         pageComponent = <About/>;
+        break;
+      default:
+        pageComponent = <MainPage/>;
         break;
     }
 
@@ -40,4 +79,4 @@ class App extends Component {
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

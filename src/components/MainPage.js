@@ -30,17 +30,31 @@ const mapDispatchToProps = (dispatch) => {
 class MainPage extends Component {
     constructor() {
         super();
+
+        this.onAboutClick = this.onAboutClick.bind(this);
+        this.onOverallClick = this.onOverallClick.bind(this);
+        this.onCharityChange = this.onCharityChange.bind(this);
     }
 
     onOverallClick = () => {
         this.props.setPage("overall");
         this.props.setYear(2017);
+
+        window.history.pushState(null, 'title', "/overall");
     };
 
     onCharityChange = (newValue) => {
         this.props.setCharity(newValue);
         this.props.setPage("foundation");
         this.props.setYear(Object.keys(data.foundations.find(f => f.n === newValue).y).sort((a,b) => b.localeCompare(a))[0]);
+
+        window.history.pushState(null, 'title', `/foundation/${newValue}`);
+    };
+
+    onAboutClick = () => {
+        this.props.setPage("about");
+
+        window.history.pushState(null, 'title', "/about");
     };
 
     render() {
@@ -54,14 +68,14 @@ class MainPage extends Component {
                 <div></div>
             </div>
             <div className="page-middle">
-                <div className="square zoom-out" onClick={this.onOverallClick.bind(this)}>
+                <div className="square zoom-out" onClick={this.onOverallClick}>
                     Click to view overall headline trends
                 </div>
                 <div className="square zoom-in" onClick={() => document.getElementById("select").focus()}>
                     View dashboards of specific funders
                     <div className="chooser">
                         <span>Search Funder:</span>
-                        <CharityChooser onChange={this.onCharityChange.bind(this)}/>
+                        <CharityChooser onChange={this.onCharityChange}/>
                     </div>
                 </div>
             </div>
@@ -71,7 +85,7 @@ class MainPage extends Component {
                 <div></div>
                 <div></div>
                 <div></div>
-                <span onClick={() => this.props.setPage("about")}>About</span>
+                <span onClick={this.onAboutClick}>About</span>
             </div>
         </div>;
     }

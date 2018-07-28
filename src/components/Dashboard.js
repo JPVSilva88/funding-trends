@@ -220,6 +220,8 @@ class Dashboard extends Component {
         this.props.setPage(page);
         this.props.setComparison(null);
         this.props.bubbleExpand.forEach((be) => this.props.setBubbleExpand(be));
+
+        window.history.pushState(null, 'title', "/" + page);
     }
 
     render() {

@@ -14,10 +14,22 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 class About extends Component {
+    constructor() {
+        super();
+
+        this.onBackClicked = this.onBackClicked.bind(this);
+
+    }
+
+    onBackClicked() {
+        this.props.setPage("home");
+        window.history.pushState(null, 'title', "/home");
+    }
+
     render() {
         return <div className="about dashboard">
             <div className="dashboard--top">
-                <div className="back" onClick={() => this.props.setPage("home")}>
+                <div className="back" onClick={this.onBackClicked}>
                     <i className="fa fa-chevron-left fa-2x"/>
                 </div>
                 <div className="dashboard--title">
