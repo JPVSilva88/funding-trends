@@ -310,7 +310,7 @@ class Overall extends Component {
                 colorClass="operation"
             />
             <div className="bottom-note">
-                <div>Note: recipients may have more than one theme description within each category and data may not be provided for full calendar years, see <span className="link-rev" onClick={this.onAboutClicked}>About</span> for limitations in this data</div>
+                <div>Note: recipients may have more than one theme description within each category and data may not be provided for each full year, also data is organised by calendar year and not by financial year. See <span className="link-rev" onClick={this.onAboutClicked}>About</span> for limitations in this data</div>
             </div>
         </div>;
     }

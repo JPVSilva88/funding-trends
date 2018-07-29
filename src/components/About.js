@@ -35,7 +35,7 @@ class About extends Component {
             </div>
             <div className="about-content">
                 <div className="section-title"><span>What is it?</span></div>
-                <div>Funding Trends helps people understand grant-making data from <a className="link" href="http://www.threesixtygiving.com" target="_blank" rel="noopener noreferrer">360Giving</a> in a new and exciting way. Users can zoom out on the data to see the overall funding trends and then zoom in to take a closer look at dedicated dashboards for each funder.</div>
+                <div>Funding Trends helps people understand grant-making data from <a className="link" href="http://www.threesixtygiving.com" target="_blank" rel="noopener noreferrer">360Giving</a> in a new and exciting way. Users can zoom out on the data to see the overall funding trends and then zoom in to take a closer look at dedicated dashboards for each funder for the time period 2013-17.</div>
                 <div style={{marginTop: "15px"}}>It uses data from 360Giving’s <a className="link" href="http://grantnav.threesixtygiving.org/" target="_blank" rel="noopener noreferrer">GrantNav</a>, as well as Charity Commission data from the <a className="link" href="https://charitybase.uk/" target="_blank" rel="noopener noreferrer">CharityBase</a> database.</div>
                 <div className="section-title"><span>Who can it help?</span></div>
                 <div className="about-help">
