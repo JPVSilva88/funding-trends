@@ -17,7 +17,13 @@ const BubbleData = ({ list, getValue, start = 0, end = 5, colorClass, seeMore, s
             })}
         </div>
         {seeMore && <div className="see-more">
-            <span className="link-rev" onClick={seeMore}>{seeMoreLabel}</span>
+            <span className="link-rev" onClick={seeMore}>
+                {seeMoreLabel}
+                {seeMoreLabel === "See More" ?
+                    <i className="fa fa-chevron-down"/> :
+                    <i className="fa fa-chevron-up"/>}
+            </span>
+
         </div>}
     </div>
 );
