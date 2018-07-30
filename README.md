@@ -2,9 +2,9 @@
 
 **What is it?**
 
-Funding Trends helps people understand grant-making data from 360Giving in a new and exciting way. Users can zoom out on the data to see the overall funding trends and then zoom in to take a closer look at dedicated dashboards for each funder.
+Funding Trends helps people understand grant-making data from [360Giving](http://www.threesixtygiving.com) in a new and exciting way. Users can zoom out on the data to see the overall funding trends and then zoom in to take a closer look at dedicated dashboards for each funder.
 
-It uses data from 360Giving’s GrantNav, as well as Charity Commission data from the CharityBase database.
+It uses data from 360Giving’s [GrantNav](http://grantnav.threesixtygiving.org/), as well as Charity Commission data from the [CharityBase](https://charitybase.uk/) database.
 
 ---
 
@@ -40,3 +40,17 @@ There are limitations in this data that you should keep in mind when researching
 4. Recipients can be listed under more than one category within each theme: This is because the tool uses the Charity Commission’s non-distinct approach to categorising charities under multiple themes.
 
    _For example: as NSPCC is categorised under both ‘education/training’ and ‘general charitable purposes’, it's funders are listed as supporting both categories._
+   
+**Development**
+
+```
+npm install
+npm start
+```
+
+It will open `http://localhost:3000` on your browser so you can see any changes you make.
+
+**License**
+
+This tool is freely available under the [Creative Commons 4.0 licence](https://creativecommons.org/licenses/by/4.0/).
+
